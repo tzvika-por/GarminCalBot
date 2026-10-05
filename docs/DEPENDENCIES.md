@@ -1,0 +1,7 @@
+# Dependency review
+
+The project pins `garminconnect==0.3.11` and `requests==2.33.1`; `requirements.lock` records the ten packages resolved in an isolated macOS Python 3.13 virtual environment on 2026-10-05. The bot uses `Garmin(...)`, `login()`, `get_user_summary(date)`, and `get_devices()`. Those symbols and signatures were inspected without a network login. Offline fake-service tests validate the adapter and bot logic; they do not establish compatibility with a live Garmin account.
+
+These versions are newer than the affected ranges in [garminconnect GHSA-wjhr-76vg-2hvc](https://github.com/advisories/GHSA-wjhr-76vg-2hvc) (patched in 0.3.5), [requests GHSA-9hjg-9r4m-mvj7](https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7) (patched in 2.32.4), and [requests GHSA-gc5v-m9x4-r6x2](https://github.com/psf/requests/security/advisories/GHSA-gc5v-m9x4-r6x2) (patched in 2.33.0). This targeted review is not a complete vulnerability audit. Update pins deliberately after reviewing upstream changes, then regenerate the lock and rerun tests.
+
+Installed package metadata/license files in the isolated venv indicated MIT (`garminconnect`, `curl_cffi`, `charset-normalizer`, `urllib3`), Apache-2.0 (`requests`, `ua-generator` license file), MIT-0 (`cffi`), BSD-3-Clause (`idna`, `pycparser`), and MPL-2.0 (`certifi`). No GPL/AGPL package was identified in this resolved set. The project itself uses Apache-2.0; bundled/redistributed dependencies retain their own notices and obligations. Review the exact installed artifacts when distributing a bundle.

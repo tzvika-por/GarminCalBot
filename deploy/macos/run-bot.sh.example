@@ -1,0 +1,12 @@
+#!/bin/zsh
+set -eu
+umask 077
+
+# Replace all placeholder paths. After copying, chmod 700 the private wrapper.
+# Keep this private file and the environment file owner-only.
+set -a
+source "/ABSOLUTE/PRIVATE/PATH/bot.env"
+set +a
+export BOT_STATE_DIR="/ABSOLUTE/PRIVATE/STATE/DIR"
+cd "/ABSOLUTE/PATH/TO/GarminCalBot-public"
+exec "/ABSOLUTE/PATH/TO/GarminCalBot-public/.venv/bin/python" "garmin_cal_bot.py"

@@ -1,0 +1,33 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*secrets*.env
+*.key
+*.pem
+.garminconnect/
+garmin_tokens.json
+
+# Runtime data and private review material
+.local/
+state.json
+state.json.*
+*.log
+*.log.*
+.garmin_cal_bot_state.json
+.garmin_cal_bot.log
+
+# Build and OS files
+build/
+dist/
+*.egg-info/
+.DS_Store
